@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Caveat:wght@600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Jost", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --font-hand: "Caveat", cursive;
+
+  --color-bg: #FDFAF4;
+  --color-bg-section: #F5F0E5;
+  --color-bg-warm: #EDE6D5;
+  --color-bg-dark: #1E3A5F;
+  --color-bg-darker: #142840;
+  --color-bg-mid: #254872;
+  --color-bg-card-dark: #1A3356;
+  --color-navy: #1E3A5F;
+  --color-navy-mid: #2A527A;
+  --color-navy-light: #3D6E9A;
+  --color-navy-pale: #C5D5E8;
+  --color-cream: #F8F3E8;
+  --color-cream-deep: #EDE6D5;
+  --color-gold: #B8963A;
+  --color-gold-light: #D4B870;
+  --color-jasmine: #E8D5A0;
+  --color-jasmine-pale: #F5EDD0;
+  --color-green-herb: #4A6A42;
+  --color-text: #1A2E1A;
+  --color-text-muted: #6A5E4A;
+  --color-text-light: #F8F3E8;
+
+  --animate-spin-slow: spin 120s linear infinite;
+  --animate-fade-in: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-up: slideUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-steam: steam 3s ease-in-out infinite;
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes steam {
+    0%, 100% { transform: translateY(0) scaleY(1); opacity: 0.2; }
+    50% { transform: translateY(-4px) scaleY(1.1); opacity: 0.6; }
+  }
+}
+
+/* Custom CSS utilities for tactile/imperfect design assets */
+
+/* Linen tablecloth subtle pattern */
+.bg-linen {
+  background-color: #FDFAF4;
+  background-image: 
+    linear-gradient(90deg, rgba(30, 58, 95, 0.02) 1px, transparent 1px),
+    linear-gradient(rgba(30, 58, 95, 0.02) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+.bg-linen-dark {
+  background-color: #F50E5; /* Soft linen */
+  background-image: 
+    linear-gradient(90deg, rgba(30, 58, 95, 0.028) 1px, transparent 1px),
+    linear-gradient(rgba(30, 58, 95, 0.028) 1px, transparent 1px);
+  background-size: 12px 12px;
+}
+
+/* Dark noise grain */
+.bg-grain {
+  background-color: #1E3A5F;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.03) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
+
+/* Custom Polish Faience Pattern */
+.bg-faience {
+  background-color: #F8F3E8;
+  background-image: radial-gradient(#1E3A5F 18%, transparent 20%),
+                    radial-gradient(#1E3A5F 18%, transparent 20%);
+  background-size: 16px 16px;
+  background-position: 0 0, 8px 8px;
+  opacity: 0.04;
+}
+
+.bg-faience-medium {
+  background-image: radial-gradient(rgba(30, 58, 95, 0.15) 15%, transparent 18%),
+                    radial-gradient(rgba(30, 58, 95, 0.15) 15%, transparent 18%);
+  background-size: 24px 24px;
+  background-position: 0 0, 12px 12px;
+}
+
+/* Notebook margin style line */
+.notebook-margin {
+  position: relative;
+}
+.notebook-margin::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 2rem;
+  width: 1px;
+  background-color: rgba(30, 58, 95, 0.15);
+  pointer-events: none;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Smooth behaviors */
+html {
+  scroll-behavior: smooth;
+  color: #1A2E1A; /* Root text default */
+  background-color: #FDFAF4;
+}
+
+body {
+  font-family: "Jost", sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom dotted border representational of old pottery edges */
+.dotted-faience-border {
+  background-image: radial-gradient(circle, #1E3A5F 1.5px, transparent 1.5px);
+  background-size: 8px 8px;
+  background-repeat: repeat-x;
+  height: 4px;
+  width: 100%;
+}

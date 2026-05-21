@@ -1,0 +1,6 @@
+{
+  "name": "Jaśmin - Pierogi i obiady domowe",
+  "description": "Tradycyjne polskie pierogi i domowe obiady w Szczecinie. Prawdziwy, domowy smak przygotowywany z sercem.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
