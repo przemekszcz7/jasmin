@@ -1,18 +1,35 @@
-name: Build and Test CI
+name: Build and Deploy to GitHub Pages
 
 on:
   push:
     branches: [ "main", "master" ]
-  pull_request:
-    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queue.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-lint:
+  build-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
       - name: Setup Node.js Environment
         uses: actions/setup-node@v4
@@ -27,10 +44,14 @@ jobs:
 
       - name: Build Production Bundle
         run: npm run build
+        env:
+          NODE_ENV: production
 
-      # Note: Optional upload artifact step for GitHub Pages deployment or server copy
-      - name: Upload Production Artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          name: jasmin-production-dist
-          path: dist/
+          path: './dist'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
